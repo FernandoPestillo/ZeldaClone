@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _playerRigidBody2D;
     private Animator    _playerAnimator;
     public float        _playerSpeed;
+    private float       _playerInitialSpeed;
+    public float       _playerRunSpeed;
     private Vector2     _playerDirection;
 
 
@@ -16,6 +18,8 @@ public class PlayerController : MonoBehaviour
     {
         _playerRigidBody2D = GetComponent<Rigidbody2D>();
         _playerAnimator = GetComponent<Animator>();
+
+        _playerInitialSpeed = _playerSpeed;
     }
 
     // Update is called once per frame
@@ -33,6 +37,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Flip();
+        PlayerRun();
     }
 
      void FixedUpdate()
@@ -49,6 +54,19 @@ public class PlayerController : MonoBehaviour
         else if (_playerDirection.x < 0)
         {
             transform.eulerAngles = new Vector2(0f, 180f);
+        }
+    }
+
+    void PlayerRun()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            _playerSpeed = _playerRunSpeed;
+        }
+
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            _playerSpeed = _playerInitialSpeed;
         }
     }
 }
