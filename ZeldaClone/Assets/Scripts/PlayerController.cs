@@ -26,8 +26,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         _playerDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        // _playerDirection.Normalize();
 
-        if(_playerDirection.sqrMagnitude > 0 )
+        if (_playerDirection.sqrMagnitude > 0 )
         {
             _playerAnimator.SetInteger("Movimento", 1);
         } 
