@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
 
      void FixedUpdate()
     {
-        _playerRigidBody2D.MovePosition(_playerRigidBody2D.position + _playerDirection * _playerSpeed * Time.fixedDeltaTime);
+        _playerRigidBody2D.MovePosition(_playerRigidBody2D.position + _playerDirection.normalized * _playerSpeed * Time.fixedDeltaTime);
     }
 
     void Flip()
