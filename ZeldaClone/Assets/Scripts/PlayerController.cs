@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     public float       _playerRunSpeed;
     private Vector2     _playerDirection;
 
+    private bool _isAttack = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +41,12 @@ public class PlayerController : MonoBehaviour
 
         Flip();
         PlayerRun();
+        OnAttack();
+
+        if( _isAttack )
+        {
+            _playerAnimator.SetInteger("Movimento", 2);
+        }
     }
 
      void FixedUpdate()
@@ -67,6 +75,21 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
+            _playerSpeed = _playerInitialSpeed;
+        }
+    }
+
+    void OnAttack()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+        {
+            _isAttack = true;
+            _playerSpeed = 0;
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0))
+        {
+            _isAttack = false;
             _playerSpeed = _playerInitialSpeed;
         }
     }
