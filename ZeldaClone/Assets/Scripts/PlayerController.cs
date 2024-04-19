@@ -27,29 +27,41 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _playerDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        // _playerDirection.Normalize();
+        
 
-        if (_playerDirection.sqrMagnitude > 0 )
+        // Flip();
+        PlayerRun();
+        OnAttack();
+
+        
+    }
+
+     void FixedUpdate()
+    {
+        _playerDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        if (_playerDirection.sqrMagnitude > 0.1)
         {
+            MovePlayer();
+
+            _playerAnimator.SetFloat("AxisX", _playerDirection.x);
+            _playerAnimator.SetFloat("AxisY", _playerDirection.y);
+
+
             _playerAnimator.SetInteger("Movimento", 1);
-        } 
+        }
         else
         {
             _playerAnimator.SetInteger("Movimento", 0);
         }
 
-        Flip();
-        PlayerRun();
-        OnAttack();
-
-        if( _isAttack )
+        if (_isAttack)
         {
             _playerAnimator.SetInteger("Movimento", 2);
         }
     }
 
-     void FixedUpdate()
+    void MovePlayer()
     {
         _playerRigidBody2D.MovePosition(_playerRigidBody2D.position + _playerDirection.normalized * _playerSpeed * Time.fixedDeltaTime);
     }
