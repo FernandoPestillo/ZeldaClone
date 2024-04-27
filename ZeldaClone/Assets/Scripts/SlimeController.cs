@@ -44,4 +44,9 @@ public class SlimeController : MonoBehaviour
             }
         }
     }
+
+    public void OnHit(float damage)
+    {
+        Debug.Log("Dano recebido" + damage);
+    }
 }
