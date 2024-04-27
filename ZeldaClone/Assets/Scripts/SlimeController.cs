@@ -1,9 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SlimeController : MonoBehaviour
 {
+    bool isAlive = true;
+    public Animator animator;
+    public float Health {
+        set
+        {
+            if (value < _health)
+            {
+                animator.SetTrigger("hit");
+            }
+
+            _health = value;
+
+            if (_health <= 0)
+            {
+                animator.SetBool("isAlive", false);
+                // Destroy(gameObject);
+            }
+        }
+        get
+        {
+            return _health;
+        }
+    }
+    public float _health = 3;
+
+    
     public float        _moveSpeedSlime = 3.5f;
     private Vector2     _slimeDirection;
     private Rigidbody2D _slimeRB2D;
@@ -15,6 +42,8 @@ public class SlimeController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+        animator.SetBool("isAlive", isAlive);
         _slimeRB2D = GetComponent<Rigidbody2D>();
     }
 
@@ -45,8 +74,10 @@ public class SlimeController : MonoBehaviour
         }
     }
 
-    public void OnHit(float damage)
+    void OnHit(float damage)
     {
         Debug.Log("Dano recebido" + damage);
+        Health = Health - damage;
+        Debug.Log("Vida atual: " + Health);
     }
 }

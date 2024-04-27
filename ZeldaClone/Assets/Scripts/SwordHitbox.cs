@@ -18,10 +18,11 @@ public class SwordHitbox : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Colisao");
-        Debug.Log(col.collider);
+        Debug.Log("Colisao" + col);
 
-        col.collider.SendMessage("OnHit", swordCollider);
+        Debug.Log("Collider: " + col.collider);
+
+        col.collider.SendMessage("OnHit", _swordDamage);
     }
 
 
