@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimeController : MonoBehaviour
+public class SlimeController : MonoBehaviour, IDamageable
 {
     bool isAlive = true;
     public Animator animator;
@@ -20,6 +20,7 @@ public class SlimeController : MonoBehaviour
             if (_health <= 0)
             {
                 animator.SetBool("isAlive", false);
+                Targetable = false;
                 // Destroy(gameObject);
             }
         }
@@ -28,7 +29,16 @@ public class SlimeController : MonoBehaviour
             return _health;
         }
     }
+
+    public bool Targetable { get { return _targetable; }
+    set {
+            _targetable = value;
+
+            _slimeRB2D.simulated = value;
+    } }
+
     public float _health = 3;
+    public bool _targetable = true;
 
     
     public float        _moveSpeedSlime = 3.5f;
@@ -74,10 +84,23 @@ public class SlimeController : MonoBehaviour
         }
     }
 
-    void OnHit(float damage)
+
+    public void OnHit(float damage, Vector2 knockback)
     {
-        Debug.Log("Dano recebido" + damage);
         Health = Health - damage;
-        Debug.Log("Vida atual: " + Health);
+
+        // Aplicando física ao receber ataque
+        _slimeRB2D.AddForce(knockback);
+        Debug.Log("knockback:" + knockback);
+    }
+
+    public void OnHit(float damage)
+    {
+        Health = Health - damage;
+    }
+
+    public void OnObjectDestroyed()
+    {
+        Destroy(gameObject);
     }
 }

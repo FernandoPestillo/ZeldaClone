@@ -6,6 +6,7 @@ using UnityEngine;
 public class SwordHitbox : MonoBehaviour
 {
     public float _swordDamage = 1f;
+    public float knockbackForce = 4000f;
     public Collider2D swordCollider;
 
     void Start()
@@ -18,11 +19,22 @@ public class SwordHitbox : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        Debug.Log("Colisao" + col);
 
         Debug.Log("Collider: " + col.collider);
 
-        col.collider.SendMessage("OnHit", _swordDamage);
+        IDamageable damageableObject = col.collider.GetComponent<IDamageable>();
+        if(damageableObject != null)
+        {
+            Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
+            Vector2 direction  = (Vector2) (col.collider.gameObject.transform.position - parentPosition).normalized;
+            Vector2 knockback = direction * knockbackForce;
+
+            // col.collider.SendMessage("OnHit", _swordDamage, knockback);
+            damageableObject.OnHit(_swordDamage, knockback);
+        } else {
+            Debug.LogWarning("Objeto não implementou inferface IDamageable");
+        }
+
     }
 
 

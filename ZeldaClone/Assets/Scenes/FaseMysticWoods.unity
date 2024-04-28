@@ -647,7 +647,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 9
   m_Sprite: {fileID: 97331144, guid: aa836617dd7a54e4c9ae476959e72636, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -772,6 +772,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   _health: 3
+  _targetable: 1
   _moveSpeedSlime: 3.5
   _detectionArea: {fileID: 565892235}
 --- !u!1 &422582309
@@ -5637,7 +5638,7 @@ Transform:
   m_GameObject: {fileID: 453324721}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.62, y: 3.32, z: -10}
+  m_LocalPosition: {x: -3.02, y: 2.51, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5912,7 +5913,7 @@ Transform:
   m_GameObject: {fileID: 500895816}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.62, y: 3.32, z: 0}
+  m_LocalPosition: {x: -3.02, y: 2.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5981,7 +5982,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0023429394, y: 0.6229591}
+  m_Offset: {x: 0, y: 0.1}
   m_Size: {x: 0.8280053, y: 1.2104462}
   m_Direction: 0
 --- !u!114 &500895822
@@ -6318,6 +6319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _swordDamage: 1
+  knockbackForce: 4000
   swordCollider: {fileID: 766572045}
 --- !u!61 &766572045
 BoxCollider2D:
@@ -6351,7 +6353,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.946628, y: 0.25036865}
+  m_Offset: {x: -0.946628, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -38273,7 +38275,7 @@ Transform:
   m_GameObject: {fileID: 1273318490}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.5998187, y: 3.31461, z: -10}
+  m_LocalPosition: {x: -2.6132767, y: 2.50784, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39561,7 +39563,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 9
   m_Sprite: {fileID: 1003269923, guid: bdc7a07ab4e4584479ec8265ac24e122, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -39800,7 +39802,7 @@ Transform:
   m_GameObject: {fileID: 1794904093}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -0.5, z: 0}
+  m_LocalPosition: {x: 1, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39819,6 +39821,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _swordDamage: 1
+  knockbackForce: 4000
   swordCollider: {fileID: 1794904096}
 --- !u!61 &1794904096
 BoxCollider2D:
@@ -39892,7 +39895,7 @@ Transform:
   m_GameObject: {fileID: 1802648628}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.8, y: 0.55, z: 0}
+  m_LocalPosition: {x: -0.8, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -39911,6 +39914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _swordDamage: 1
+  knockbackForce: 4000
   swordCollider: {fileID: 1802648631}
 --- !u!61 &1802648631
 BoxCollider2D:
@@ -40423,7 +40427,7 @@ Transform:
   m_GameObject: {fileID: 1958596989}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 0.55, z: 0}
+  m_LocalPosition: {x: 1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -40442,6 +40446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _swordDamage: 1
+  knockbackForce: 4000
   swordCollider: {fileID: 1958596992}
 --- !u!61 &1958596992
 BoxCollider2D:
