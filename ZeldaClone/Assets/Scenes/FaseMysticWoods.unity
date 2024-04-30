@@ -947,6 +947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c216e6a3f802ea40acbdb6f008cb18d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 1
+  knockbackForce: 100
   animator: {fileID: 0}
   _health: 3
   _targetable: 1
@@ -6278,6 +6280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vida: 4
   vidaMaxima: 4
+  animator: {fileID: 0}
   coracao:
   - {fileID: 234802853}
   - {fileID: 519657719}
@@ -6285,6 +6288,7 @@ MonoBehaviour:
   - {fileID: 878743526}
   cheio: {fileID: 21300000, guid: d628f357c9f244c40a486989f7156b77, type: 3}
   vazio: {fileID: 21300000, guid: 9b3f8a49ed779504da9170a15c4defa5, type: 3}
+  _targetable: 1
 --- !u!1 &519657717
 GameObject:
   m_ObjectHideFlags: 0
@@ -38765,7 +38769,7 @@ Transform:
   m_GameObject: {fileID: 1273318490}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.5193372, y: 2.49997, z: -10}
+  m_LocalPosition: {x: -2.6132767, y: 2.50784, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class SlimeController : MonoBehaviour, IDamageable
 {
+    public float damage = 1f;
+    public float knockbackForce = 100f;
     bool isAlive = true;
     public Animator animator;
     public float Health {
@@ -102,5 +104,20 @@ public class SlimeController : MonoBehaviour, IDamageable
     public void OnObjectDestroyed()
     {
         Destroy(gameObject);
+    }
+    // Quando Slime colidir com algum Objeto com Interface IDamageable, aplicar dano e knockback
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("Colidiu com inimigo");
+        IDamageable damageable = collision.collider.GetComponent<IDamageable>();
+
+        if(damageable != null)
+        {
+            Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
+            Vector2 direction = (Vector2)(collision.collider.gameObject.transform.position - transform.position).normalized;
+            Vector2 knockback = direction * knockbackForce;
+
+            damageable.OnHit(damage, knockback);
+        }
     }
 }
