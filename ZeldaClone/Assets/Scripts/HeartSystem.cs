@@ -25,8 +25,8 @@ public class HeartSystem : MonoBehaviour, IDamageable
         }
     }
 
-    public float vida = 4;
-    public float vidaMaxima = 4f;
+    public float vida = 5f;
+    public float vidaMaxima = 5f;
     bool isAlive = true;
     public Animator animator;
     private Rigidbody2D _playerRB2D;
