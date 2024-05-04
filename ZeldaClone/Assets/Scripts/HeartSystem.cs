@@ -5,8 +5,10 @@ using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class HeartSystem : MonoBehaviour, IDamageable
 {
+    public GameObject MenuRestart;
     public float Health
     {
         set
@@ -17,6 +19,7 @@ public class HeartSystem : MonoBehaviour, IDamageable
             {
                 animator.SetBool("isAlive", false);
                 Targetable = false;
+                MenuRestart.SetActive(true);
             }
         }
         get
