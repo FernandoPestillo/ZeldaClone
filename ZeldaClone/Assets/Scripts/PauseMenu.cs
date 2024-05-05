@@ -23,7 +23,8 @@ public class PauseMenu : MonoBehaviour
             if (pauseMenu.gameObject.activeSelf) 
             { 
                 pauseMenu.gameObject.SetActive(false);
-                Time.timeScale = 1;            }
+                Time.timeScale = 1;
+            }
             else 
             {
                 pauseMenu.gameObject.SetActive(true);
