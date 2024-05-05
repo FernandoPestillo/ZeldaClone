@@ -27,13 +27,13 @@ public class KeysManager : MonoBehaviour
     {
         chavesOuro++;
         numeroChavesOuro = GameObject.Find("chavesOuro").GetComponent<TMP_Text>();
-        numeroChavesOuro.text = chavesPrata.ToString();
+        numeroChavesOuro.text = chavesOuro.ToString();
     }
     public void UsarChaveOuro()
     {
         chavesOuro--;
         numeroChavesOuro = GameObject.Find("chavesOuro").GetComponent<TMP_Text>();
-        numeroChavesOuro.text = chavesPrata.ToString();
+        numeroChavesOuro.text = chavesOuro.ToString();
     }
 
 }

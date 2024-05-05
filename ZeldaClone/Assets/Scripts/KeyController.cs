@@ -8,8 +8,11 @@ public class KeyController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Encontrou Chave!");
-        Destroy(gameObject);
-        KeysManager.EncontrarChavePrata();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Encontrou Chave!");
+            Destroy(gameObject);
+            KeysManager.EncontrarChavePrata();
+        }
     }
 }
