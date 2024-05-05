@@ -12,6 +12,7 @@ public class MenuPrincipalManager : MonoBehaviour
     public void Jogar()
     {
         SceneManager.LoadScene(nomeLevelJogo);
+        Time.timeScale = 1;
     }
     public void AbrirComandos()
     {
