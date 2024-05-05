@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private float       _playerInitialSpeed;
     public float       _playerRunSpeed;
     private Vector2     _playerDirection;
+    public HeartSystem _playerHeartSystem;
 
     private bool _isAttack = false;
 
@@ -63,6 +64,7 @@ public class PlayerController : MonoBehaviour
 
     void MovePlayer()
     {
+        if(_playerHeartSystem.gettingKnockBack) { return; }
         _playerRigidBody2D.MovePosition(_playerRigidBody2D.position + _playerDirection.normalized * _playerSpeed * Time.fixedDeltaTime);
     }
 

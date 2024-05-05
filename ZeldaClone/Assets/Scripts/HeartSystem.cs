@@ -42,6 +42,8 @@ public class HeartSystem : MonoBehaviour, IDamageable
     
 
     public bool _targetable = true;
+    public bool gettingKnockBack = false;
+
     public bool Targetable
     {
         get { return _targetable; }
@@ -96,8 +98,15 @@ public class HeartSystem : MonoBehaviour, IDamageable
 
     public void OnHit(float damage, Vector2 knockback)
     {
+        gettingKnockBack = true;
         Health = Health - damage;
         _playerRB2D.AddForce(knockback, ForceMode2D.Impulse);
+        StartCoroutine(KnockRoutine());
+    }
+    private IEnumerator KnockRoutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        gettingKnockBack = false;
     }
 
     public void OnHit(float damage)
