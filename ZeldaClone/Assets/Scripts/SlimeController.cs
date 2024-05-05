@@ -105,7 +105,7 @@ public class SlimeController : MonoBehaviour, IDamageable
     {
         Destroy(gameObject);
     }
-    // Quando Slime colidir com algum Objeto com Interface IDamageable, aplicar dano e knockback
+    // Quando Slime colidir com o Player, aplicar dano e knockback
     void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Colidiu com inimigo");

@@ -13,14 +13,13 @@ public class SwordHitbox : MonoBehaviour
     {
         if(swordCollider == null)
         {
-            Debug.LogWarning("Deu bosta");
+            Debug.LogWarning("swordCollider nao encontrado");
         }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
 
-        Debug.Log("Collider: " + col.collider);
 
         IDamageable damageableObject = col.collider.GetComponent<IDamageable>();
         if(damageableObject != null)
