@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class HeartSystem : MonoBehaviour, IDamageable
 {
     public GameObject MenuRestart;
+    public GameObject MenuDificuldade;
     public float Health
     {
         set
@@ -107,6 +108,22 @@ public class HeartSystem : MonoBehaviour, IDamageable
     public void OnObjectDestroyed()
     {
         throw new System.NotImplementedException();
+    }
+
+    public void Normal()
+    {
+        Debug.Log("Normal");
+        vidaMaxima = 5f;
+        Time.timeScale = 1;
+        MenuDificuldade.SetActive(false);
+    }
+
+    public void Hard()
+    {
+        Debug.Log("Hard");
+        vidaMaxima = 2f;
+        Time.timeScale = 1;
+        MenuDificuldade.SetActive(false);
     }
 }
 
