@@ -6,6 +6,12 @@ public class ChestController : MonoBehaviour
 {
     public Animator animator;
     public KeysManager KeysManager;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
