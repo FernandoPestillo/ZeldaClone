@@ -111,7 +111,7 @@ public class SlimeController : MonoBehaviour, IDamageable
         Debug.Log("Colidiu com inimigo");
         IDamageable damageable = collision.collider.GetComponent<IDamageable>();
 
-        if(damageable != null)
+        if(damageable != null && collision.gameObject.CompareTag("Player"))
         {
             Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
             Vector2 direction = (Vector2)(collision.collider.gameObject.transform.position - transform.position).normalized;
