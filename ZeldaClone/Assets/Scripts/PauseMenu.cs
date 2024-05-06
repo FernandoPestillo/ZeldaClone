@@ -5,14 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public Transform pauseMenu;
-    public object Imput;
+    public GameObject pauseMenu;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -20,14 +19,15 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (pauseMenu.gameObject.activeSelf) 
+            Debug.Log("apertou ESC" + pauseMenu.activeSelf);
+            if (pauseMenu.activeSelf) 
             { 
-                pauseMenu.gameObject.SetActive(false);
+                pauseMenu.SetActive(false);
                 Time.timeScale = 1;
             }
             else 
             {
-                pauseMenu.gameObject.SetActive(true);
+                pauseMenu.SetActive(true);
                 Time.timeScale = 0;
             }
         }        

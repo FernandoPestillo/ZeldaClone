@@ -189,7 +189,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   _health: 3
   _targetable: 1
-  _moveSpeedSlime: 3.5
+  _moveSpeedSlime: 5
   _detectionArea: {fileID: 3957808726653252270}
 --- !u!1 &2719737934599596902
 GameObject:
