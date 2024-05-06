@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FaseMysticWoods.unity
     guid: 9ffea9918c47ba442a1fa1ab285625fa
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Telarestart.unity
     guid: 4cbb0a997f983bd4ea8d9861826ff513
   - enabled: 1
