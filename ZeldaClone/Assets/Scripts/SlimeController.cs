@@ -41,8 +41,10 @@ public class SlimeController : MonoBehaviour, IDamageable
 
     public float _health = 3;
     public bool _targetable = true;
+    public bool causandoDano = false;
 
-    
+
+
     public float        _moveSpeedSlime = 3.5f;
     private Vector2     _slimeDirection;
     private Rigidbody2D _slimeRB2D;
@@ -73,7 +75,11 @@ public class SlimeController : MonoBehaviour, IDamageable
         {
             _slimeDirection = (_detectionArea.detectedObjs[0].transform.position - transform.position).normalized;
 
-            _slimeRB2D.MovePosition(_slimeRB2D.position +  _slimeDirection * _moveSpeedSlime * Time.fixedDeltaTime);
+            if (!causandoDano)
+            {
+                _slimeRB2D.MovePosition(_slimeRB2D.position +  _slimeDirection * _moveSpeedSlime * Time.fixedDeltaTime);
+            }
+
 
             if(_slimeDirection.x > 0)
             {
@@ -113,11 +119,20 @@ public class SlimeController : MonoBehaviour, IDamageable
 
         if(damageable != null && collision.gameObject.CompareTag("Player"))
         {
+            causandoDano = true;
             Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
             Vector2 direction = (Vector2)(collision.collider.gameObject.transform.position - transform.position).normalized;
             Vector2 knockback = direction * knockbackForce;
 
             damageable.OnHit(damage, knockback);
+            _slimeRB2D.AddForce((direction * -1) * knockbackForce, ForceMode2D.Impulse);
+            StartCoroutine(DamageRoutine());
+
         }
+    }
+    private IEnumerator DamageRoutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        causandoDano = false;
     }
 }

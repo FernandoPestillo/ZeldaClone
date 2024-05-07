@@ -45,6 +45,7 @@ public class SkeletonController : MonoBehaviour, IDamageable
 
     public float _health = 4;
     public bool _targetable = true;
+    public bool causandoDano = false;
 
 
     public float _moveSpeedSkeleton = 3.5f;
@@ -77,7 +78,10 @@ public class SkeletonController : MonoBehaviour, IDamageable
         {
             _skeletonDirection = (_detectionArea.detectedObjs[0].transform.position - transform.position).normalized;
 
-            _skeletonRB2D.MovePosition(_skeletonRB2D.position + _skeletonDirection * _moveSpeedSkeleton * Time.fixedDeltaTime);
+            if (!causandoDano)
+            {
+                _skeletonRB2D.MovePosition(_skeletonRB2D.position + _skeletonDirection * _moveSpeedSkeleton * Time.fixedDeltaTime);
+            }
 
             if (_skeletonDirection.x > 0)
             {
@@ -123,11 +127,19 @@ public class SkeletonController : MonoBehaviour, IDamageable
 
         if (damageable != null && collision.gameObject.CompareTag("Player"))
         {
+            causandoDano = true;
             Vector3 parentPosition = gameObject.GetComponentInParent<Transform>().position;
             Vector2 direction = (Vector2)(collision.collider.gameObject.transform.position - transform.position).normalized;
             Vector2 knockback = direction * knockbackForce;
 
             damageable.OnHit(damage, knockback);
+            _skeletonRB2D.AddForce((direction * -1) * knockbackForce, ForceMode2D.Impulse);
+            StartCoroutine(DamageRoutine());
         }
+    }
+    private IEnumerator DamageRoutine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        causandoDano = false;
     }
 }
