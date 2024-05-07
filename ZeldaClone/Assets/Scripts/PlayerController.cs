@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         _playerDirection = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if (_playerDirection.sqrMagnitude > 0.1)
+        if (_playerDirection.sqrMagnitude > 0.1 && _playerAnimator.GetInteger("Movimento") != 2)
         {
             MovePlayer();
 

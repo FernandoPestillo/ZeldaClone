@@ -26,8 +26,8 @@ public class HeartSystem : MonoBehaviour, IDamageable
         }
     }
 
-    public float vida = 5f;
-    public float vidaMaxima = 5f;
+    public float vida = 6f;
+    public float vidaMaxima = 6f;
     bool isAlive = true;
     public Animator animator;
     private Rigidbody2D _playerRB2D;
@@ -119,7 +119,7 @@ public class HeartSystem : MonoBehaviour, IDamageable
     public void Normal()
     {
         Debug.Log("Normal");
-        vidaMaxima = 5f;
+        vidaMaxima = 6f;
         Time.timeScale = 1;
         MenuDificuldade.SetActive(false);
     }

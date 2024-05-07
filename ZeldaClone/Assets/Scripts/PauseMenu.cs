@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu;
+    public GameObject restartMenu;
 
 
     // Start is called before the first frame update
@@ -17,7 +18,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !restartMenu.activeSelf)
         {
             Debug.Log("apertou ESC" + pauseMenu.activeSelf);
             if (pauseMenu.activeSelf) 
